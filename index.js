@@ -5,9 +5,12 @@ const bodyParser = require('body-parser')
 const app = express()
 const multer = require('multer');
 const db = require('./queries')
-const port = 3000
 const upload = multer({ dest: 'uploads/' });
 const validation = require('./validation')
+const dotenv = require('dotenv');
+dotenv.config();
+
+const port = process.env.PORT || 3000
 
 app.use(bodyParser.json())
 app.use(
