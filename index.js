@@ -25,8 +25,8 @@ app.get('/', (request, response) => {
 
 app.post("/upload", upload.single("file"), function (request, response) {
     const file = request.file
-    if(!file) {
-    	return response.json({status: 'error', message: 'Please provide a file'})
+    if(!file || file.mimetype != 'text/csv') {
+    	return response.json({status: 'error', message: 'Please provide a valid csv file'})
     }
 
     // open uploaded file
